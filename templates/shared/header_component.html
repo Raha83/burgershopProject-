@@ -1,0 +1,54 @@
+{% load thumbnail %}
+<header>
+    <div class="header-area ">
+        <div id="sticky-header" class="main-header-area">
+            <div class="container-fluid p-0">
+                <div class="row align-items-center no-gutters header-item">
+                    <div>
+                        <div class="main-menu  d-none d-lg-block">
+                            <nav>
+                                <ul id="navigation">
+                                    <li><a class="{% if request.resolver_match.url_name == 'index_page' %}active{% endif %}"
+                                            href="/">خانه</a></li>
+                                    <li><a class="{% if request.resolver_match.url_name == 'menu_page' %}active{% endif %}"
+                                            href="{% url 'menu_page' %}">منو</a></li>
+                                    <li><a class="{% if request.resolver_match.url_name == 'about_us_page' %}active{% endif %}"
+                                            href="{% url 'about_us_page' %}">درباره</a></li>
+                                    <li><a href="contact.html">تماس با ما</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="logo-img">
+                            <a href="/">
+                                {% thumbnail site_setting.logo '184x100' quality=95 crop='center' as im %}
+                                <img src="{{im.url}}" alt="">
+                                {% endthumbnail %}
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="auth-buttons-container">
+                            {% if not user.is_authenticated %}
+                            <button id="register">
+                                <a href="{% url 'register_page' %}">ثبت نام</a>
+                            </button>
+                            <button id="login">
+                                <a href="{% url 'login_page' %}">ورود</a>
+                            </button>
+                            {% else %}
+                            <button id="logout">
+                                <a href="{% url 'logout_page' %}">خروج از حساب کاربری</a>
+                            </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="mobile_menu d-block d-lg-none"></div>
+            </div>
+        </div>
+    </div>
+</header>

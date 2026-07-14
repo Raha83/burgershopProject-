@@ -1,0 +1,47 @@
+<footer class="footer">
+    <div class="footer_top">
+        <div class="container">
+            <div class="row">
+                {% for category in footer_category %}
+                <div class="col-xl-4 col-md-6 col-lg-4">
+                    {% for link in category.footerlink_set.all %}
+                    <div class="footer_widget text-center ">
+                        <h3 class="footer_title pos_margin">
+                            {{category}}
+                        </h3>
+                        <p>{{link.address}}<br>
+                            <a href="#">{{link.website}}</a>
+                        </p>
+                        <p>{{link.phone}}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+                <div class="col-xl-4 col-md-12 col-lg-4">
+                    <div class="footer_widget">
+                        <h3 class="footer_title">
+                            در ارتباط بمانید
+                        </h3>
+                        <form action="#" class="newsletter_form">
+                            <input type="text" placeholder="ایمیل خود را وارد کنید">
+                            <button type="submit">ثبت نام</button>
+                        </form>
+                        <p class="newsletter_text">با ما در ارتباط بمانید تا از اخرین پیشنهاد ها با خبر شوید</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copy-right_text">
+        <div class="container">
+            <div class="footer_border"></div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <p class="copy_right text-center">
+                        {{site_setting.copy_right}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

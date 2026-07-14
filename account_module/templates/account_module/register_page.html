@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثبت‌ نام</title>
+    <link rel="stylesheet" href="/static/css/loginregister.css">
+</head>
+
+<body>
+    <div class="signup-form">
+        <!--sign up form-->
+        <h2>ثبت نام</h2>
+        <form method="post" action="{% url 'register_page' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{register_form}}
+            <button type="submit" class="btn btn-default">ثبت نام</button>
+        </form>
+        <p>
+            حساب کاربری دارید؟از<a href="{% url 'login_page' %}"> اینجا </a>وارد شوید
+        </p>
+    </div>
+    <!--/sign up form-->
+</body>
+
+</html>
