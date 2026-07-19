@@ -4,6 +4,7 @@ from django.http import HttpRequest,JsonResponse
 from product_module.models import Burger
 from order_module.models import Order,OrderDetail
 
+
 def addProductToOrder(request:HttpRequest):
     product_id=int(request.GET.get('product_id'))
     product_count=int(request.GET.get('product_count'))
@@ -50,3 +51,11 @@ def addProductToOrder(request:HttpRequest):
                  'text':'محصول با این مشخصات یافت نشد',
                  'confirm_button_text':'متوجه شدم'
                    })
+
+@login_required        
+def userBasketView(request:HttpRequest):
+    current_order,created=Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False,user_id=request.user.id)
+    context={
+        'current_order':current_order
+    }
+    return render(request,'order_module/user_basket.html',context)

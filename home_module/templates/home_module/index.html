@@ -1,5 +1,6 @@
 {% extends 'shared/layout.html' %}
 {% load thumbnail %}
+{% load poll_extras %}
 
 {% block title %}صفحه اصلی{% endblock %}
 
@@ -52,7 +53,7 @@
                         {% if burger.short_description %}
                         <p>{{burger.short_description}}</p>
                         {% endif %}
-                        <span>{{burger.price}} ریال</span>
+                        <span>{{burger.price | three_digits_currency}}</span>
                     </div>
                 </div>
                 {% endfor %}

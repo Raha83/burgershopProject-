@@ -1,69 +1,97 @@
-@import url("https://fonts.googleapis.com/css?family=Samim:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800|Samim|Paytone+One&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&display=swap");
-/* line 1, ../../Arafath/CL/December/229. Restaurant (Burger)/HTML/scss/_extend.scss */
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700&display=swap");
 
 *{
-  font-family:  Samim  ; 
-  
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Samim, sans-serif;
 }
 
-body {
-  direction: rtl;
-  text-align: right;
-  color: #000000;
+body{
+    direction: rtl;
+    background:#f7f7f7;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-.signup-form {
-  text-align: center;
-  padding: 25px 30px 10px 30px;
-  width: 500px;
-  margin: 0 auto;
-  max-width: 100%;
+.signup-form{
+    width:100%;
+    max-width:450px;
+    background:#fff;
+    padding:10px 30px;
+    margin: 0 auto;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
 }
 
-.form-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+.signup-form h2{
+    text-align:center;
+    margin-bottom:30px;
+    border-bottom:1px solid #eee;
+    padding-bottom:15px;
 }
 
-.signup-form h2 {
-  font-weight: bold;
-  border-bottom: 1px solid #000000;
-  padding: 10px 5px;
+.signup-form form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
 }
 
-.signup-form form {
-  margin: 20px auto;
-  display: flex;
-  flex-direction: column; 
+.form-group{
+    display:flex;
+    flex-direction:column;
 }
 
-.signup-form form label {
-    flex: 0 0 100px;
-    text-align: right;
+.signup-form label{
+    margin-bottom:8px;
+    font-weight:bold;
 }
 
-.signup-form form input {
-  border-radius: 30px;
-  background: none;
-  border: 1px solid #000000;
-  padding: 10px;
-  margin: 10px 0 10px 0; 
-  flex: 1; 
+.signup-form input{
+    width:100%;
+    padding:12px 15px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+    transition:.3s;
+    font-size:15px;
 }
 
-.signup-form form button {
-  background: #c75b18;
-  border-radius: 30px;
-  color: #ffffff;
-  border: none;
-  padding: 10px 30px;
-  margin-top: 20px;
-  width: 120px;
-  align-self: center; 
+.signup-form input:focus{
+    border-color:#c75b18;
+    box-shadow:0 0 8px rgba(199,91,24,.2);
 }
 
-p>a {
-  color: red;
+.signup-form button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#c75b18;
+    color:#fff;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.signup-form button:hover{
+    background:#a34712;
+}
+
+.signup-form p{
+    text-align:center;
+    margin-top:20px;
+}
+
+.signup-form p a{
+    color:#c75b18;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.signup-form p a:hover{
+    text-decoration:underline;
 }

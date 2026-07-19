@@ -13,7 +13,7 @@ function addProductToOrder(productId){
             if(result.isConfirmed && res.status === 'not_auth'){
                 window.location.href='/login/';
             }else if(result.isConfirmed && res.status === 'success'){
-                window.location.href='user/user-basket';
+                window.location.href='/order/user-basket';
             };
         });
     });

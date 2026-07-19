@@ -14,7 +14,13 @@
         <h2>ثبت نام</h2>
         <form method="post" action="{% url 'register_page' %}" enctype="multipart/form-data">
             {% csrf_token %}
-            {{register_form}}
+            {% for field in register_form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {{ field.errors }}
+            </div>
+            {% endfor %}
             <button type="submit" class="btn btn-default">ثبت نام</button>
         </form>
         <p>

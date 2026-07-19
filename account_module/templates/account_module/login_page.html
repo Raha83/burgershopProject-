@@ -14,7 +14,13 @@
         <h2>ورود</h2>
         <form method="post" action="{% url 'login_page' %}" enctype="multipart/form-data">
             {% csrf_token %}
-            {{login_form}}
+            {% for field in login_form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {{ field.errors }}
+            </div>
+            {% endfor %}
             <button type="submit" class="btn btn-default">ورود</button>
         </form>
         <p>

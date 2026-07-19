@@ -16,7 +16,7 @@ class Order(models.Model):
         else:
             for detail in self.orderdetail_set.all():
                 total_amount += detail.product.price * detail.count
-                return total_amount
+            return total_amount
             
     def __str__(self):
         return str(self.user)

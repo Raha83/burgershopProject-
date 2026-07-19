@@ -1,18 +1,17 @@
 {% extends 'shared/layout.html' %}
+{% load poll_extras %}
 
 {% block title %}سبد خرید{% endblock %}
 
 {% block content %}
-{% if current_order.orderdetail_set %}
+<!-- bradcam_area_start -->
+<div class="bradcam_area breadcam_bg_3 overlay">
+    <h3>سبد خرید</h3>
+</div>
+<!-- bradcam_area_end -->
+{% if current_order.orderdetail_set.all %}
 <section id="cart_items">
     <div class="container">
-        <div class="breadcrumbs">
-            <ol class="breadcrumb">
-                <li><a href="{% url 'index_page' %}">خانـه</a></li>
-                <li class="active">پرداخت</li>
-            </ol>
-        </div>
-        <!--/breadcrums-->
         <div class="table-responsive cart_info">
             <table class="table table-condensed">
                 <thead>
@@ -35,7 +34,7 @@
                             <h4><a class="one-line-text" href="">{{detail.product.name}}</a></h4>
                         </td>
                         <td class="cart_price">
-                            <p>{{detail.product.price}}</p>
+                            <p>{{detail.product.price | three_digits_currency}}</p>
                         </td>
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
@@ -46,7 +45,7 @@
                             </div>
                         </td>
                         <td class="cart_total">
-                            <p class="cart_total_price">{{detail.get_total_price}}</p>
+                            <p class="cart_total_price">{{detail.get_total_price | three_digits_currency}}</p>
                         </td>
                     </tr>
                     {% endfor %}
@@ -62,7 +61,9 @@
             <div class="col-sm-6">
                 <div class="total_area">
                     <ul>
-                        <li>مجمـوع سبـد خریـد <span>{{current_order.calculate_total_price}}</span></li>
+                        <li>مجمـوع سبـد خریـد
+                            <span>{{current_order.calculate_total_price | three_digits_currency}}</span>
+                        </li>
                     </ul>
                     <a class="btn btn-default check_out" href="">پرداخت</a>
                 </div>
