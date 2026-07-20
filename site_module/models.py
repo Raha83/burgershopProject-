@@ -5,6 +5,7 @@ class SiteSetting(models.Model):
     url=models.URLField(verbose_name="نشانی سایت")
     phone=models.CharField(null=True,blank=True,verbose_name="شماره تماس")
     email=models.EmailField(null=True,blank=True,verbose_name="ایمیل")
+    address=models.CharField(max_length=100,verbose_name='آدرس شعبه اصلی')
     introduction_text=models.CharField(null=True,blank=True,max_length=300,verbose_name="معرفی سایت")
     about_us_text=models.TextField(null=True,blank=True,verbose_name="متن درباره‌ی ما")
     intro_image=models.ImageField(null=True,upload_to='images/site_setting',verbose_name="تصویر معرفی سایت")

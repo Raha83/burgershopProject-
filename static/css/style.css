@@ -1245,6 +1245,16 @@ h3 {
   padding: 0;
 }
 
+/* line 1, ../../Arafath/CL/December/229. Restaurant (Burger)/HTML/scss/_slider.scss */
+.slider_bg_1 {
+  background-image: url(../img/banner/banner.png);
+}
+
+/* line 4, ../../Arafath/CL/December/229. Restaurant (Burger)/HTML/scss/_slider.scss */
+.slider_bg_2 {
+  background-image: url(../img/banner/banner2.png);
+}
+
 /* line 7, ../../Arafath/CL/December/229. Restaurant (Burger)/HTML/scss/_slider.scss */
 .slider_area {
   position: relative;
@@ -2784,6 +2794,10 @@ h3 {
   background-image: url(../img/banner/bradcam2.png);
 }
 
+.breadcam_bg_2 {
+  background-image: url(../img/banner/bradcam3.png);
+}
+
 .breadcam_bg_3 {
   background-image: url(../img/banner/bradcam3.png);
 }
@@ -2853,15 +2867,7 @@ h3 {
 @media (max-width: 767px) {
   /* line 12, ../../Arafath/CL/December/229. Restaurant (Burger)/HTML/scss/_delicious.scss */
   .best_burgers_area .single_delicious {
-    display: block !important;
     text-align: center;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  /* line 12, ../../Arafath/CL/December/229. Restaurant (Burger)/HTML/scss/_delicious.scss */
-  .best_burgers_area .single_delicious {
-    display: block !important;
   }
 }
 

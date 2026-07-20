@@ -43,3 +43,12 @@ class AboutView(View):
             'site_setting':site_setting
         }
         return render(request,'home_module/about_us.html',context)
+    
+class ContactView(View):
+    def get(self,request):
+        site_setting=SiteSetting.objects.filter(is_main_setting=True).first()
+
+        context={
+            'site_setting':site_setting
+        }
+        return render(request,'home_module/contact_us.html',context)

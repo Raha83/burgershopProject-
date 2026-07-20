@@ -35,13 +35,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section_title text-center mb-80">
-                    <span>منوی برگر‌ها</span>
+                    <span>بهترین برگرها</span>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-6 col-md-6 col-lg-6">
-                {% for burger in burgers %}
+            {% for burger in burgers %}
+            <div class="col-xl-6 col-md-6 col-lg-6 mb-4">
                 <div class="single_delicious d-flex align-items-center">
                     <div class="thumb">
                         {% thumbnail burger.image '166x166' quality=95 crop='center' as im %}
@@ -56,8 +56,8 @@
                         <span>{{burger.price | three_digits_currency}}</span>
                     </div>
                 </div>
-                {% endfor %}
             </div>
+            {% endfor %}
         </div>
         <div class="row">
             <div class="col-lg-12">

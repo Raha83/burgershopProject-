@@ -14,7 +14,8 @@
                                             href="{% url 'menu_page' %}">منو</a></li>
                                     <li><a class="{% if request.resolver_match.url_name == 'about_us_page' %}active{% endif %}"
                                             href="{% url 'about_us_page' %}">درباره</a></li>
-                                    <li><a href="contact.html">تماس با ما</a></li>
+                                    <li><a class="{% if request.resolver_match.url_name == 'contact_us_page' %}active{% endif %}"
+                                            href="{% url 'contact_us_page' %}">تماس با ما</a></li>
                                 </ul>
                             </nav>
                         </div>
