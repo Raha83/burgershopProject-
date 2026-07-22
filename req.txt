@@ -1,0 +1,4 @@
+Django
+django_render_partial
+sorl.thumbnail
+requests
