@@ -7,11 +7,13 @@ from site_module.models import SiteSetting,FooterCat,Slider
 class HomeView(View):
     def get(self,request):
         product=Burger.objects.filter(is_active=True)[0:4]
+        popular_product=Burger.objects.filter(is_active=True,is_popular=True)[0:2]
         site_setting=SiteSetting.objects.filter(is_main_setting=True).first()
         sliders=Slider.objects.filter(is_active=True)
         
         context={
             'burgers':product,
+            'popular_burgers':popular_product,
             'site_setting':site_setting,
             'sliders':sliders
         }

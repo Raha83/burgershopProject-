@@ -1,6 +1,7 @@
 {% extends 'shared/layout.html' %}
 {% load thumbnail %}
 {% load poll_extras %}
+{% load static %}
 
 {% block title %}صفحه اصلی{% endblock %}
 
@@ -35,7 +36,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section_title text-center mb-80">
-                    <span>بهترین برگرها</span>
+                    <span>منو برگرها</span>
                 </div>
             </div>
         </div>
@@ -68,6 +69,36 @@
         </div>
     </div>
 </div>
+<!-- features_room_start -->
+<div class="Burger_President_area">
+    {% for burger in popular_burgers %}
+    <div class="Burger_President_here">
+        <div class="single_Burger_President">
+            <div class="room_thumb">
+                {% if forloop.counter0 == 0 %}
+                <img src="{% static 'img/burger/1.png' %}" alt="">
+                {% else %}
+                <img src="{% static 'img/burger/2.png' %}" alt="">
+                {% endif %}
+                <div class="room_heading d-flex justify-content-between align-items-center">
+                    <div class="room_heading_inner">
+                        <span>{{burger.price | three_digits_currency}}</span>
+                        <h3>{{burger.name}}</h3>
+                        <p>{{burger.short_description}}</p>
+                        <span class="product-buy-box">
+                            <label for="productCount">تعداد :</label>
+                            <input type="number" min="1" id="productCount" value="1" class="search_box">
+                            <button onclick="addProductToOrder('{{ burger.id }}')" class="btn cart">همین حالا سفارش
+                                بده</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<!-- features_room_end -->
 <!-- about_area_start -->
 <div class="about_area">
     <div class="container">
@@ -94,21 +125,6 @@
     </div>
 </div>
 <!-- about_area_end -->
-<!-- video_area_start -->
-<div class="video_area video_bg overlay">
-    <div class="video_area_inner text-center">
-        <h3>همبرگرپز <br>
-            مجرد</h3>
-        <span>چگونه همبرگر های خوشمزه میسازیم</span>
-        <div class="video_payer">
-            <a href="https://www.youtube.com/watch?v=vLnPwxZdW4Y" class="video_btn popup-video">
-                <i class="fa fa-play"></i>
-            </a>
-        </div>
-    </div>
-</div>
-<!-- video_area_end -->
-
 <!-- testimonial_area_start  -->
 <div class="testimonial_area ">
     <div class="container">

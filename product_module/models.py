@@ -6,6 +6,7 @@ class Burger(models.Model):
     image=models.ImageField(upload_to="images/products",verbose_name="تصویر محصول")
     short_description=models.CharField(max_length=300,null=True,verbose_name="توضیحات محصول")
     is_active=models.BooleanField(verbose_name='موجود/غیرموجود')
+    is_popular=models.BooleanField(verbose_name="پرطرفدار")
     
     class Meta:
         verbose_name="محصول"
@@ -13,4 +14,5 @@ class Burger(models.Model):
 
     def __str__(self):
         return self.name
+    
 
