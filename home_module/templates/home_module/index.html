@@ -152,63 +152,7 @@
                                             <img src="/static/img/testmonial/1.png" alt="">
                                         </div>
                                         <h4>Kristiana Chouhan</h4>
-                                        <div class="stars">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single_carousel">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="single_testmonial text-center">
-                                    <p>“لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                        گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
-                                        برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
-                                        کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته</p>
-                                    <div class="testmonial_author">
-                                        <div class="thumb">
-                                            <img src="/static/img/testmonial/2.png" alt="">
-                                        </div>
-                                        <h4>شخص</h4>
-                                        <div class="stars">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single_carousel">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="single_testmonial text-center">
-                                    <p>“لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                        گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
-                                        برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
-                                        کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته</p>
-                                    <div class="testmonial_author">
-                                        <div class="thumb">
-                                            <img src="/static/img/testmonial/3.png" alt="">
-                                        </div>
-                                        <h4>شخص 2</h4>
-                                        <div class="stars">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half"></i>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -217,6 +161,19 @@
                 </div>
             </div>
         </div>
+        <form method="post" action="{% url 'index_page' %}">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-xl-12">
+                    {{ comment_form.as_p }}
+                </div>
+                <div class="form-group mt-3">
+                    <button type="submit" class="button button-contactForm boxed-btn">
+                        ارسال
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 <!-- testimonial_area_ned  -->

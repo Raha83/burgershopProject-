@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from product_module.models import Burger
 from site_module.models import SiteSetting,FooterCat,Slider
+from .forms import CommentForm
 
 
 class HomeView(View):
@@ -10,12 +11,24 @@ class HomeView(View):
         popular_product=Burger.objects.filter(is_active=True,is_popular=True)[0:2]
         site_setting=SiteSetting.objects.filter(is_main_setting=True).first()
         sliders=Slider.objects.filter(is_active=True)
+        comment_form=CommentForm()
         
         context={
             'burgers':product,
             'popular_burgers':popular_product,
             'site_setting':site_setting,
-            'sliders':sliders
+            'sliders':sliders,
+            'comment_form':comment_form
+        }
+        return render(request,'home_module/index.html',context)
+    def post(self,request):
+        comment_form=CommentForm(request.POST)
+        if comment_form.is_valid():
+            new_comment=comment_form.save()
+            comment_form=CommentForm()
+
+        context={
+            'comment_form':comment_form
         }
         return render(request,'home_module/index.html',context)
     
