@@ -13,7 +13,7 @@ class HomeView(View):
         site_setting=SiteSetting.objects.filter(is_main_setting=True).first()
         sliders=Slider.objects.filter(is_active=True)
         comment_form=CommentForm()
-        comments=Comment.objects.filter().order_by('-created_at')[0:3]
+        comments=Comment.objects.filter().order_by('-created_at')
         
         context={
             'burgers':product,
