@@ -1,4 +1,5 @@
 Django
 django_render_partial
+django-jalali-date
 sorl.thumbnail
 requests

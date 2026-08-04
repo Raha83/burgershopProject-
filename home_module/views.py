@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views import View
 from product_module.models import Burger
 from site_module.models import SiteSetting,FooterCat,Slider
+from .models import Comment
 from .forms import CommentForm
 
 
@@ -12,19 +13,22 @@ class HomeView(View):
         site_setting=SiteSetting.objects.filter(is_main_setting=True).first()
         sliders=Slider.objects.filter(is_active=True)
         comment_form=CommentForm()
+        comments=Comment.objects.filter().order_by('-created_at')[0:3]
         
         context={
             'burgers':product,
             'popular_burgers':popular_product,
             'site_setting':site_setting,
             'sliders':sliders,
-            'comment_form':comment_form
+            'comment_form':comment_form,
+            'comments':comments
         }
         return render(request,'home_module/index.html',context)
     def post(self,request):
         comment_form=CommentForm(request.POST)
         if comment_form.is_valid():
             new_comment=comment_form.save()
+            return redirect('index_page')
             comment_form=CommentForm()
 
         context={

@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'polls',
     #external apps
     'django_render_partial',
-    'sorl.thumbnail'
+    'sorl.thumbnail',
+    'jalali_date'
 ]
 
 MIDDLEWARE = [
