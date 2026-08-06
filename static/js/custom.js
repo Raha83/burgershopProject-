@@ -18,3 +18,11 @@ function addProductToOrder(productId){
         });
     });
 }
+
+function order_detail_quantity(detailId,state){
+    $.get('/order/user-order-quantity?detail_id='+detailId+ '&state='+state).then(res =>{
+        if(res.status === 'success'){
+            $('#userBasket').html(res.body);
+        }
+    })
+}

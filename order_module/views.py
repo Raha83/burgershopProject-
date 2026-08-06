@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest,JsonResponse
 from product_module.models import Burger
@@ -55,7 +56,49 @@ def addProductToOrder(request:HttpRequest):
 @login_required        
 def userBasketView(request:HttpRequest):
     current_order,created=Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False,user_id=request.user.id)
+
     context={
         'current_order':current_order
     }
     return render(request,'order_module/user_basket.html',context)
+
+@login_required
+def change_order_quantity(request):
+    detail_id=request.GET.get('detail_id')
+    state=request.GET.get('state')
+    
+    if detail_id is None or state is None:
+        return JsonResponse({
+            'status':'not_found_detail_id_state'
+        })
+    
+    current_detail=OrderDetail.objects.filter(id=detail_id,order__is_paid=False,order__user_id=request.user.id).first()
+    if current_detail is None:
+        return JsonResponse({
+            'status': 'detail_not_found'
+        })
+    
+    if state == 'increase':
+        current_detail.count +=1
+        current_detail.save()
+    elif state == 'decrease':
+        if current_detail.count == 1:
+            current_detail.delete()
+        else:
+            current_detail.count -=1
+            current_detail.save()
+    else:
+        return JsonResponse({
+            'status':'invalid_state'
+        })
+
+    current_order,created=Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False,user_id=request.user.id)
+    total_amount=current_order.calculate_total_price()
+    context={
+        'current_order':current_order,
+        'total_amount':total_amount
+    }
+    return JsonResponse({
+        'status':'success',
+        'body':render_to_string('order_module/user_basket.html',context)
+    })
